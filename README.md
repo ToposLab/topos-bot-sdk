@@ -33,6 +33,7 @@ password: str = "<账号密码>"
 ```
 
 # API 函数列表
+## 基础 API
 ```python
 from sdk.core import get_user, get_chat, get_joined_chats
 
@@ -46,6 +47,7 @@ chat = get_chat(chat_id)
 joined_chats = get_joined_chats()
 ```
 
+## 消息 API
 ```python
 from sdk.messaging import Context
 
