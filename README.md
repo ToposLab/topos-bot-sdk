@@ -17,7 +17,7 @@ Topos Bot SDK (以下简称 BotSDK)，是 Topos 专为开发者打造的聊天�
 BotSDK 运行在 Python >=3.9 的环境下。如果你是第一次使用 BotSDK，需要先使用 pip 安装所需要的依赖包。
 
 ```
-pip3 install -r requirements
+pip3 install -r requirements.txt
 ```
 
 在确认依赖包都已经被安装后，你就可以通过 ```python3 example.py``` 调用。
