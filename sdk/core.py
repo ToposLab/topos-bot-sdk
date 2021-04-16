@@ -19,6 +19,7 @@ class AuthStore:
 auth = AuthStore()
 
 chat_cache: dict[str, Chat] = {}
+direct_chat_cache: dict[str, Chat] = {}
 user_cache: dict[str, User] = {}
 
 
@@ -71,6 +72,18 @@ def get_joined_chats():
     data = make_request("GET", "/chats")
     return list(map(lambda x: Chat(x), data))
 
+def ensure_direct_chat(to_user_id: str, ignore_cache: bool = False):
+    if (not ignore_cache) and to_user_id in direct_chat_cache:
+        return direct_chat_cache[to_user_id]
+
+    data = make_request("POST", "/chats", {
+        "toUserId": to_user_id
+    })
+
+    chat = Chat(data)
+    direct_chat_cache[to_user_id] = chat
+
+    return chat
 
 def get_chat(chat_id: str, ignore_cache: bool = False):
     if (not ignore_cache) and chat_id in chat_cache:
